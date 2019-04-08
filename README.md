@@ -1,8 +1,11 @@
 # assignment2
 
+There is our Trello Board for worklog tracker.
+https://trello.com/b/Y4Yg2tPp/assignment2
+
 This is an app of the Deakin SIT305 Assignment2
 
-Team
+Team:
 CHUN KEUNG NG (SID: 214497259)
 ZiChao Kuang (SID: 215196936)
 
