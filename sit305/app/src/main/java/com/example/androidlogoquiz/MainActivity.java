@@ -19,15 +19,7 @@ import com.example.androidlogoquiz.Adapter.GridViewAnswerAdapter;
 import com.example.androidlogoquiz.Adapter.GridViewSuggestAdapter;
 import com.example.androidlogoquiz.Common.Common;
 
-//
- URGENT HENRY COMMENT
- 
- You have NOT updated your CHANGELOG file in the root directory of GitHub.
- Nor have you added your SIDs to readme
- Nor have you done a minimum 2 days work per week.
- 
- If you do not catch up today, you should withdraw from the unit, as you cannot pass.
- //
+
 
 public class MainActivity extends AppCompatActivity {
 
