@@ -51,3 +51,13 @@
 
 ## Week 6, Monday, 8/April
 - Had a meeting at Deakin library. We do research and discuss about the "Online quiz game", prepare relevant materials for the new develop. [ZiChao Kuang, Chun Keung Ng]
+
+## Week 6, Wednesday, 10/April
+- Design the "Online quiz game" interface. [ZiChao Kuang, Chun Keung Ng]
+
+## Week 6, Thursday, 11/April
+- Start to develop the "Online quiz game" sign in/sign up page. [Chun Keung Ng, ZiChao Kuang]
+
+## Week 6, Friday, 12/April
+- Finish the sign in/sign up part. [Chun Keung Ng, ZiChao Kuang]
+- Upload the sign in/sign up part to the Github. [Chun Keung Ng]
