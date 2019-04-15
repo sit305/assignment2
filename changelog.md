@@ -2,10 +2,7 @@
 - This file needs significantly more edits, so I can match dates with attendance.php entries and ensure fair grades at end of trimester.
 - You need much more progress. Deakin requires a minimum 10-14 hours per week, per unit, in order to pass.
 
-## Week 6, Monday 8/April [Henry]
-- This file is missing WHO has done WHAT, and on WHICH DAYS.
-- Both of you: function comments. I made a big fuss about this on the unit site last week.
-- I need to get serious with you here: To catch up, you'll need to do much more. If you're not intending to pass, look into withdrawing from the unit and trying again next year.
+
 
 ## Week 3, Monday, 18/March
 - Created Github [Chun Keung Ng]
@@ -49,7 +46,10 @@
 ## Week 5, Sunday, 7/April
 - Had an online meeting on Discord. Talking about we need to go to the next step about the project, is about we going to develop an "Online quiz game". The "Logo quiz game" just like a prototype, and we going to develop an "Online quiz game" that is base on the "Logo quiz game". [ZiChao Kuang, Chun Keung Ng]
 
-## Week 6, Monday, 8/April
+## Week 6, Monday 8/April
+- Feedback: This file is missing WHO has done WHAT, and on WHICH DAYS. [Henry]
+- Feedback: Both of you: function comments. I made a big fuss about this on the unit site last week. [Henry]
+- Feedback: I need to get serious with you here: To catch up, you'll need to do much more. If you're not intending to pass, look into withdrawing from the unit and trying again next year. [Henry]
 - Had a meeting at Deakin library. We do research and discuss about the "Online quiz game", prepare relevant materials for the new develop. [ZiChao Kuang, Chun Keung Ng]
 
 ## Week 6, Wednesday, 10/April
@@ -61,3 +61,9 @@
 ## Week 6, Friday, 12/April
 - Finish the sign in/sign up part. [Chun Keung Ng, ZiChao Kuang]
 - Upload the sign in/sign up part to the Github. [Chun Keung Ng]
+
+## Week 7, Monday 15/April
+- Feedback: I'm still nont seeing function comments. Multi-line comments before EVERY function.
+- Feedback: I feel your project is falling a bit behind, and you're not putting in enough time to pass. Show me 10-14 hours each per week.. where was it spent? 
+- Feedback: I want you to start writing the time taken per changelog item (in brackets at the end of each line), so that you can see where time is being spent / not being spent enough. [Henry]
+
