@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "6551613460",
+    "firebase_url": "https://minquizapp.firebaseio.com",
+    "project_id": "minquizapp",
+    "storage_bucket": "minquizapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6551613460:android:094e4346cdeef4db",
+        "android_client_info": {
+          "package_name": "com.example.minquizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6551613460-d6ro7vnbcqeab0n67sjjrp8rmuc88a1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minquizapp",
+            "certificate_hash": "574d1f54463ae0003404aa6681473745e1d46e34"
+          }
+        },
+        {
+          "client_id": "6551613460-006hngf5rc698q550im85gfmiadnp9qg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALrYpXNCAKKMZvUuJYSaT8ITf34Bt7hgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6551613460-006hngf5rc698q550im85gfmiadnp9qg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
