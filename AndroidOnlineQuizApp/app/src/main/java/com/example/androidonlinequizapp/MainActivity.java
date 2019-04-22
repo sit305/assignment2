@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Firebase
+
+//        Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 
