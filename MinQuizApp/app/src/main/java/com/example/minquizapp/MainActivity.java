@@ -1,6 +1,8 @@
 package com.example.minquizapp;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -37,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         timerTxt = (TextView)findViewById(R.id.timerTxt);
 
         updateQuestion();
+        reverseTimer(30,timerTxt);
     }
 
     private void updateQuestion()
     {
+        total++;
         if (total >4)
         {
             //open the result Activity
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
 
-                    reference = FirebaseDatabase.getInstance().getReference().child("Question").child(String.valueOf(total));
+                    reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -292,5 +296,29 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    public  void  reverseTimer(int seconds, final TextView tv)
+    {
+        new CountDownTimer(seconds* 1000+1000, 10000){
+
+            public  void onTick(long millisUntilFinished){
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                tv.setText(String.format("%02d", minutes)
+                + ":" + String.format("%02d",seconds));
+            }
+
+            @Override
+            public void onFinish() {
+                tv.setText("Completed");
+                Intent myIntent = new Intent(MainActivity.this,ResultActivity.class);
+                myIntent.putExtra("total",String.valueOf(total));
+                myIntent.putExtra("correct",String.valueOf(correct));
+                myIntent.putExtra("incorrect",String.valueOf(wrong));
+                startActivity(myIntent);
+            }
+        }.start();
     }
 }
