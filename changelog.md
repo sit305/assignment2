@@ -69,3 +69,8 @@
 - Feedback: I feel your project is falling a bit behind, and you're not putting in enough time to pass. Show me 10-14 hours each per week.. where was it spent? 
 - Feedback: I want you to start writing the time taken per changelog item (in brackets at the end of each line), so that you can see where time is being spent / not being spent enough. [Henry]
 
+## Week 7, Monday 15/April
+- Do research about firebase. [ZiChao Kuang] (2 hours)
+- Do reseach about firebase connect to "Android studio". [Chun Keung Ng] (3.5 hours)
+
+## Week 7, Tuesday 16/April
