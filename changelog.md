@@ -75,3 +75,10 @@
 - Do reseach about firebase connect to "Android studio". [Chun Keung Ng] (3.5 hours)
 
 ## Week 7, Tuesday 16/April
+- Create a "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (6.5 hours) 
+##The "Online quiz app" can not connect to the firebase, so we create a new one for testing how it work.
+
+## Week 7, Wendesday 17/April
+- Create a "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (4 hours) 
+
+## Week 7, Friday 19/April
