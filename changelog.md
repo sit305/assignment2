@@ -75,10 +75,30 @@
 - Do reseach about firebase connect to "Android studio". [Chun Keung Ng] (3.5 hours)
 
 ## Week 7, Tuesday 16/April
-- Create a "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (6.5 hours) 
+- Create a "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (4.5 hours) 
 ##The "Online quiz app" can not connect to the firebase, so we create a new one for testing how it work.
 
 ## Week 7, Wendesday 17/April
-- Create a "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (4 hours) 
+- Keep working on the "mini quiz app" for testing the connection with firebase. [Chun Keung Ng, ZiChao Kuang] (3 hours) 
 
 ## Week 7, Friday 19/April
+- Upload the Code to the Github. [Chun Keung Ng] ##The coding that we upload into Github is about Integrate firebase in Android application(JSON data), the layout of app design and coding on MainActivity class.
+
+## Week 7, Monday 22/April
+- Work on Result Activity and display the total attempted questions as well as the correct and wrong ones.[Chun Keung Ng,ZiChao Kuang] (3 hours)
+- Upload the code into Github.[Chun Keung Ng]
+
+## Week 7, Thursday 25/April
+- Put those code about firebase into the "Online quiz app".
+- Put those code about firebase into the "Mini quiz app".
+- Tested project works on ZiChao Kuang's local computer.[ZiChao Kuang] #Noting working.
+- Tested projecy works on Chun Keung Ng's local computer.[Chun Keung Ng] #Not working.
+- Start to create an "AndroidMultiplechoice quiz app"[Chun Keung Ng] (6.5 hours) ## We are trying to workout the firebase in app by different ways.
+- Upload the code into the Github.[Chun Keung Ng]
+
+## Week 7, Friday 26/April
+- Working on the part of question list.[Chun Keung Ng, ZiChao Kuang] (3 hours)
+
+## Week 7, Saturday 27/April
+- Keep working on the part of question list.[Chun Keung Ng, ZiChao Kuang] (4 hours)
+- Upload the code into Github.[Chun Keung Ng] 
