@@ -16,20 +16,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.androidmultichoicesquiz.Adapter.AnswerSheetAdapter;
 import com.example.androidmultichoicesquiz.Common.Common;
 import com.example.androidmultichoicesquiz.DBHelper.DBHelper;
+import com.example.androidmultichoicesquiz.Model.CurrentQuestion;
+import com.example.androidmultichoicesquiz.Model.Question;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+
+import java.util.concurrent.TimeUnit;
 
 public class QuestionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    int time_lay = Common.TOTAL_TIME;
+    int time_play = Common.TOTAL_TIME;
     boolean isAnswerModeView = false;
-    CountDownTimer countDownTimer;
+
+
+
+    TextView txt_right_answer,txt_timer;
 
     RecyclerView answer_sheet_view;
     AnswerSheetAdapter answerSheetAdapter;
@@ -37,8 +45,8 @@ public class QuestionActivity extends AppCompatActivity
     //Ctrl+O
     @Override
     protected void onDestroy() {
-        if (countDownTimer !=null)
-            countDownTimer.cancel();
+        if (Common.countDownTimer !=null)
+            Common.countDownTimer.cancel();
         super.onDestroy();
     }
 
@@ -66,11 +74,22 @@ public class QuestionActivity extends AppCompatActivity
         if (Common.questionList.size() > 0) {
 
             //Show TextVIew right answer and Text View Timer
+            txt_right_answer = (TextView)findViewById(R.id.txt_question_right);
+            txt_timer = (TextView)findViewById(R.id.txt_timer);
+
+            txt_timer.setVisibility(View.VISIBLE);
+            txt_right_answer.setVisibility(View.VISIBLE);
+
+            countTimer();
+
+
+
+
 
             //View
-            answer_sheet_view = (RecyclerView) findViewById(R.id.answer_sheet);
+            answer_sheet_view = (RecyclerView) findViewById(R.id.grid_answer);
             answer_sheet_view.setHasFixedSize(true);
-            if (Common.questionList.size() > 0) // If question List have size > 5 , we will sperate 2 rows
+            if (Common.questionList.size() > 5) // If question List have size > 5 , we will sperate 2 rows
                 answer_sheet_view.setLayoutManager(new GridLayoutManager(this, Common.questionList.size() / 2));
             answerSheetAdapter = new AnswerSheetAdapter(this, Common.answerSheetList);
             answer_sheet_view.setAdapter(answerSheetAdapter);
@@ -78,6 +97,50 @@ public class QuestionActivity extends AppCompatActivity
         }
 
 
+    }
+
+
+
+    private void countTimer() {
+        if (Common.countDownTimer == null)
+        {
+            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
+                @Override
+                public void onTick(long l) {
+                    txt_timer.setText(String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(l),
+                            TimeUnit.MILLISECONDS.toSeconds(l) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
+                    time_play-=1000;
+                }
+
+                @Override
+                public void onFinish() {
+                    //Finish Game
+
+                }
+            }.start();
+        }
+        else
+        {
+            Common.countDownTimer.cancel();
+            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
+                @Override
+                public void onTick(long l) {
+                    txt_timer.setText(String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(l),
+                            TimeUnit.MILLISECONDS.toSeconds(l) -
+                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
+                    time_play-=1000;
+                }
+
+                @Override
+                public void onFinish() {
+                    //Finish Game
+
+                }
+            }.start();
+        }
     }
 
     private void takeQuestion() {
@@ -97,6 +160,17 @@ public class QuestionActivity extends AppCompatActivity
                             finish();
                         }
                     }).show();
+        }
+        else
+        {
+            //Gen answerSheet item from question
+            //30 question = 30 answer sheet item
+            // 1 question = 1 answer sheet item
+            for (int i=0;i<Common.questionList.size();i++)
+            {
+                //Because need take index of Question in list, so we will use for i
+                Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
+            }
         }
     }
 
