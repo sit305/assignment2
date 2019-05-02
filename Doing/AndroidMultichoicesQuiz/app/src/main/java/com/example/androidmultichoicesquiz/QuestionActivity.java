@@ -5,6 +5,8 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.androidmultichoicesquiz.Adapter.AnswerSheetAdapter;
+import com.example.androidmultichoicesquiz.Adapter.QuestionFramentAdapter;
 import com.example.androidmultichoicesquiz.Common.Common;
 import com.example.androidmultichoicesquiz.DBHelper.DBHelper;
 import com.example.androidmultichoicesquiz.Model.CurrentQuestion;
@@ -42,6 +45,9 @@ public class QuestionActivity extends AppCompatActivity
     RecyclerView answer_sheet_view;
     AnswerSheetAdapter answerSheetAdapter;
 
+    ViewPager viewPager;
+    TabLayout tabLayout;
+
     //Ctrl+O
     @Override
     protected void onDestroy() {
@@ -50,7 +56,11 @@ public class QuestionActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+//    private AnswerSheetAdapter answerSheetAdapter;
+//    private RecyclerView answer_sheet_view;
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
@@ -88,8 +98,8 @@ public class QuestionActivity extends AppCompatActivity
 
 
 
-
             //View
+
             answer_sheet_view = (RecyclerView) findViewById(R.id.grid_answer);
             answer_sheet_view.setHasFixedSize(true);
             if (Common.questionList.size() > 5) // If question List have size > 5 , we will sperate 2 rows
@@ -97,11 +107,34 @@ public class QuestionActivity extends AppCompatActivity
             answerSheetAdapter = new AnswerSheetAdapter(this, Common.answerSheetList);
             answer_sheet_view.setAdapter(answerSheetAdapter);
 
+            viewPager = (ViewPager) findViewById(R.id.viewpager);
+            tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+
+            genFragmentList();
+
+            QuestionFramentAdapter questionFramentAdapter = new QuestionFramentAdapter(getSupportFragmentManager(),
+                    this,
+                    Common.fragmentsList);
+            viewPager.setAdapter(questionFramentAdapter);
+
+            tabLayout.setupWithViewPager(viewPager);
+
         }
 
 
     }
 
+    private void genFragmentList() {
+        for (int i=0;i<Common.questionList.size();i++)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putInt("index",i);
+            QuestionFragment fragment = new QuestionFragment();
+            fragment.setArguments(bundle);
+
+            Common.fragmentsList.add(fragment);
+        }
+    }
 
 
     private void countTimer() {

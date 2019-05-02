@@ -43,7 +43,19 @@ public class AnswerSheetAdapter extends RecyclerView.Adapter<AnswerSheetAdapter.
 
     @Override
     public int getItemCount() {
-        return currentQuestionList.size();
+        int a ;
+
+        if(currentQuestionList != null && !currentQuestionList.isEmpty()) {
+
+            a = currentQuestionList.size();
+        }
+        else {
+
+            a = 0;
+
+        }
+
+        return a;
     }
 
     public class  MyViewHolder extends RecyclerView.ViewHolder{

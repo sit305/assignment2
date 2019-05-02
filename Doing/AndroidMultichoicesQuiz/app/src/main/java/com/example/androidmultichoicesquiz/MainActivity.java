@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Quiz Game SIT305");
         setSupportActionBar(toolbar);
 
-        recycler_category = (RecyclerView)findViewById(R.id.recycler_category);
+        recycler_category = (RecyclerView) findViewById(R.id.recycler_category);
         recycler_category.setHasFixedSize(true);
         recycler_category.setLayoutManager(new GridLayoutManager(this, 2));
 
