@@ -55,7 +55,6 @@ public class QuestionActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(Common.selectedCategory.getName());
         setSupportActionBar(toolbar);
 
 
@@ -80,8 +79,6 @@ public class QuestionActivity extends AppCompatActivity
 
             txt_timer.setVisibility(View.VISIBLE);
             txt_right_answer.setVisibility(View.VISIBLE);
-
-            txt_right_answer.setText(new StringBuilder(String.format("%d/%d",Common.right_answer_count,Common.questionList.size())));
 
             countTimer();
 
@@ -166,8 +163,6 @@ public class QuestionActivity extends AppCompatActivity
         }
         else
         {
-            if (Common.answerSheetList.size() > 0)
-                Common.answerSheetList.clear();
             //Gen answerSheet item from question
             //30 question = 30 answer sheet item
             // 1 question = 1 answer sheet item

@@ -18,8 +18,6 @@ public class Common {
 
 
     public static CountDownTimer countDownTimer;
-    public static int right_answer_count = 0;
-    public static int wrong_answer_count = 0;
 
     public enum ANSWER_TYPE{
         NO_ANSWER,

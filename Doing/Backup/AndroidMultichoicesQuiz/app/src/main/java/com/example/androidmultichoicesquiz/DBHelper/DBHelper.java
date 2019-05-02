@@ -1,6 +1,5 @@
 package com.example.androidmultichoicesquiz.DBHelper;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +16,6 @@ public class DBHelper extends SQLiteAssetHelper {
     private  static final String DB_NAME = "EDMTQuiz2019.db";
     private  static final int DB_VER = 1;
 
-    @SuppressLint("StaticFieldLeak")
     private static DBHelper instance;
 
     public  static  synchronized  DBHelper getInstance(Context context)
