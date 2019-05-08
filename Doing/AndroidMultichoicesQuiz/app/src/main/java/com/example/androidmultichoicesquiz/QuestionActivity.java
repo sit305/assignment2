@@ -28,15 +28,21 @@ import com.example.androidmultichoicesquiz.Adapter.AnswerSheetAdapter;
 import com.example.androidmultichoicesquiz.Adapter.QuestionFramentAdapter;
 import com.example.androidmultichoicesquiz.Common.Common;
 import com.example.androidmultichoicesquiz.DBHelper.DBHelper;
+import com.example.androidmultichoicesquiz.DBHelper.OnlineDBHelper;
+import com.example.androidmultichoicesquiz.Interface.MyCallback;
 import com.example.androidmultichoicesquiz.Model.CurrentQuestion;
 import com.example.androidmultichoicesquiz.Model.Question;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class QuestionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private static  final int CODE_GET_RESULT = 9999;
     int time_play = Common.TOTAL_TIME;
     boolean isAnswerModeView = false;
 
@@ -46,9 +52,11 @@ public class QuestionActivity extends AppCompatActivity
 
     RecyclerView answer_sheet_view;
     AnswerSheetAdapter answerSheetAdapter;
+//    AnswerSheetHelperAdapter answerSheetHelperAdapter;
 
     ViewPager viewPager;
     TabLayout tabLayout;
+    DrawerLayout drawer;
 
     //Ctrl+O
     @Override
@@ -84,6 +92,192 @@ public class QuestionActivity extends AppCompatActivity
         //First , we need take question from DB
         takeQuestion();
 
+
+
+
+    }
+
+    private void finishGame() {
+        int position = viewPager.getCurrentItem();
+
+        QuestionFragment questionFragment = Common.fragmentsList.get(position);
+        CurrentQuestion question_state = questionFragment.getSelectedAnswer();
+        Common.answerSheetList.set(position,question_state); // Set question answer for answersheet
+        answerSheetAdapter.notifyDataSetChanged(); // Change color in answer sheet
+
+
+        countCorrectAnswer();
+
+        txt_right_answer.setText(new StringBuilder(String.format("%d",Common.right_answer_count))
+                .append("/")
+                .append(String.format("%d",Common.questionList.size())).toString());
+                txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
+
+        txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
+
+
+        if (question_state.getType() == Common.ANSWER_TYPE.NO_ANSWER)
+        {
+            questionFragment.showCorrectAnswer();
+            questionFragment.disableAnswer();
+        }
+
+        //We will navigate to new Result Activity here
+
+    }
+
+    private void countCorrectAnswer() {
+        //Reset variable
+        Common.right_answer_count = Common.wrong_answer_count = 0;
+        for (CurrentQuestion item:Common.answerSheetList)
+            if (item.getType() == Common.ANSWER_TYPE.RIGHT_ANSWER)
+                Common.right_answer_count++;
+            else if (item.getType() == Common.ANSWER_TYPE.WRONG_ANSWER)
+                Common.wrong_answer_count++;
+
+    }
+
+    private void genFragmentList() {
+        for (int i=0;i<Common.questionList.size();i++)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putInt("index",i);
+            QuestionFragment fragment = new QuestionFragment();
+            fragment.setArguments(bundle);
+
+            Common.fragmentsList.add(fragment);
+        }
+    }
+
+
+    private void countTimer() {
+        if (Common.countDownTimer == null)
+        {
+            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
+                @Override
+                public void onTick(long l) {
+                    txt_timer.setText(String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(l),
+                            TimeUnit.MILLISECONDS.toSeconds(l) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
+                    time_play-=1000;
+                }
+
+                @Override
+                public void onFinish() {
+                    //Finish Game
+
+                }
+            }.start();
+        }
+        else
+        {
+            Common.countDownTimer.cancel();
+            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
+                @Override
+                public void onTick(long l) {
+                    txt_timer.setText(String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(l),
+                            TimeUnit.MILLISECONDS.toSeconds(l) -
+                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
+                    time_play-=1000;
+                }
+
+                @Override
+                public void onFinish() {
+                    //Finish Game
+
+                }
+            }.start();
+        }
+    }
+
+    private void takeQuestion() {
+
+        if (!Common.isOnlineMode)
+        {
+            Common.questionList = DBHelper.getInstance(this).getQuestionByCategory(Common.selectedCategory.getId());
+            if (Common.questionList.size() == 0)
+            {
+                //If no question
+                new MaterialStyledDialog.Builder(this)
+                        .setTitle("Opps !")
+                        .setIcon(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
+                        .setDescription("We don't have any question in this "+Common.selectedCategory.getName()+" category")
+                        .setPositiveText("OK")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                                finish();
+                            }
+                        }).show();
+            }
+            else
+            {
+                if (Common.answerSheetList.size() > 0)
+                    Common.answerSheetList.clear();
+                //Gen answerSheet item from question
+                //30 question = 30 answer sheet item
+                // 1 question = 1 answer sheet item
+                for (int i=0;i<Common.questionList.size();i++)
+                {
+                    //Because need take index of Question in list, so we will use for i
+                    Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
+                }
+            }
+
+            setupQuestion();
+        }
+
+        else
+            {
+                OnlineDBHelper.getInstance(this,
+                        FirebaseDatabase.getInstance())
+                        .readData(new MyCallback() {
+                            @Override
+                            public void setQuestionList(List<Question> questionList) {
+
+                                if (Common.questionList.size() == 0)
+                                {
+                                    //If no question
+                                    new MaterialStyledDialog.Builder(QuestionActivity.this)
+                                            .setTitle("Opps !")
+                                            .setIcon(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
+                                            .setDescription("We don't have any question in this "+Common.selectedCategory.getName()+" category")
+                                            .setPositiveText("OK")
+                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                                @Override
+                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                    dialog.dismiss();
+                                                    finish();
+                                                }
+                                            }).show();
+                                }
+                                else
+                                {
+                                    if (Common.answerSheetList.size() > 0)
+                                        Common.answerSheetList.clear();
+                                    //Gen answerSheet item from question
+                                    //30 question = 30 answer sheet item
+                                    // 1 question = 1 answer sheet item
+                                    for (int i=0;i<Common.questionList.size();i++)
+                                    {
+                                        //Because need take index of Question in list, so we will use for i
+                                        Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
+                                    }
+                                }
+
+                                setupQuestion();
+
+                            }
+                        },Common.selectedCategory.getName().replace("","".replace("/","_")));
+        }
+
+
+    }
+
+    private void setupQuestion() {
         if (Common.questionList.size() > 0) {
 
             //Show TextVIew right answer and Text View Timer
@@ -198,8 +392,9 @@ public class QuestionActivity extends AppCompatActivity
                     countCorrectAnswer();
 
                     txt_right_answer.setText(new StringBuilder(String.format("%d",Common.right_answer_count))
-                    .append("/")
-                    .append(String.format("%d",Common.questionList.size())).toString());
+                            .append("/")
+                            .append(String.format("%d",Common.questionList.size())).toString());
+                    txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
 
                     if (question_state.getType() == Common.ANSWER_TYPE.NO_ANSWER)
                     {
@@ -216,136 +411,6 @@ public class QuestionActivity extends AppCompatActivity
             });
 
         }
-
-
-    }
-
-    private void finishGame() {
-        int position = viewPager.getCurrentItem();
-
-        QuestionFragment questionFragment = Common.fragmentsList.get(position);
-        CurrentQuestion question_state = questionFragment.getSelectedAnswer();
-        Common.answerSheetList.set(position,question_state); // Set question answer for answersheet
-        answerSheetAdapter.notifyDataSetChanged(); // Change color in answer sheet
-
-
-        countCorrectAnswer();
-
-        txt_right_answer.setText(new StringBuilder(String.format("%d",Common.right_answer_count))
-                .append("/")
-                .append(String.format("%d",Common.questionList.size())).toString());
-                txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
-
-        txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
-
-
-        if (question_state.getType() == Common.ANSWER_TYPE.NO_ANSWER)
-        {
-            questionFragment.showCorrectAnswer();
-            questionFragment.disableAnswer();
-        }
-
-        //We will navigate to new Result Activity here
-
-    }
-
-    private void countCorrectAnswer() {
-        //Reset variable
-        Common.right_answer_count = Common.wrong_answer_count = 0;
-        for (CurrentQuestion item:Common.answerSheetList)
-            if (item.getType() == Common.ANSWER_TYPE.RIGHT_ANSWER)
-                Common.right_answer_count++;
-            else if (item.getType() == Common.ANSWER_TYPE.WRONG_ANSWER)
-                Common.wrong_answer_count++;
-
-    }
-
-    private void genFragmentList() {
-        for (int i=0;i<Common.questionList.size();i++)
-        {
-            Bundle bundle = new Bundle();
-            bundle.putInt("index",i);
-            QuestionFragment fragment = new QuestionFragment();
-            fragment.setArguments(bundle);
-
-            Common.fragmentsList.add(fragment);
-        }
-    }
-
-
-    private void countTimer() {
-        if (Common.countDownTimer == null)
-        {
-            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
-                @Override
-                public void onTick(long l) {
-                    txt_timer.setText(String.format("%02d:%02d",
-                            TimeUnit.MILLISECONDS.toMinutes(l),
-                            TimeUnit.MILLISECONDS.toSeconds(l) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
-                    time_play-=1000;
-                }
-
-                @Override
-                public void onFinish() {
-                    //Finish Game
-
-                }
-            }.start();
-        }
-        else
-        {
-            Common.countDownTimer.cancel();
-            Common.countDownTimer = new CountDownTimer(Common.TOTAL_TIME, 1000) {
-                @Override
-                public void onTick(long l) {
-                    txt_timer.setText(String.format("%02d:%02d",
-                            TimeUnit.MILLISECONDS.toMinutes(l),
-                            TimeUnit.MILLISECONDS.toSeconds(l) -
-                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l))));
-                    time_play-=1000;
-                }
-
-                @Override
-                public void onFinish() {
-                    //Finish Game
-
-                }
-            }.start();
-        }
-    }
-
-    private void takeQuestion() {
-        Common.questionList = DBHelper.getInstance(this).getQuestionByCategory(Common.selectedCategory.getId());
-        if (Common.questionList.size() == 0)
-        {
-            //If no question
-            new MaterialStyledDialog.Builder(this)
-                    .setTitle("Opps !")
-                    .setIcon(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
-                    .setDescription("We don't have any question in this "+Common.selectedCategory.getName()+" category")
-                    .setPositiveText("OK")
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            dialog.dismiss();
-                            finish();
-                        }
-                    }).show();
-        }
-        else
-        {
-            if (Common.answerSheetList.size() > 0)
-                Common.answerSheetList.clear();
-            //Gen answerSheet item from question
-            //30 question = 30 answer sheet item
-            // 1 question = 1 answer sheet item
-            for (int i=0;i<Common.questionList.size();i++)
-            {
-                //Because need take index of Question in list, so we will use for i
-                Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
-            }
-        }
     }
 
     @Override
@@ -361,13 +426,6 @@ public class QuestionActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.question, menu);
-        return true;
-    }
-
-    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.menu_wrong_answer);
         ConstraintLayout constraintLayout = (ConstraintLayout)item.getActionView();
@@ -376,6 +434,15 @@ public class QuestionActivity extends AppCompatActivity
 
         return true;
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.question, menu);
+        return true;
+    }
+
 
 
 
@@ -407,6 +474,7 @@ public class QuestionActivity extends AppCompatActivity
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 dialog.dismiss();
                                 finishGame();
+
                             }
                         }).show();
             }

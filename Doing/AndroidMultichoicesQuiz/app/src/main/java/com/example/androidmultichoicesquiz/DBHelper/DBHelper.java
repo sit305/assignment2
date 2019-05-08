@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteAssetHelper {
     private  static final String DB_NAME = "EDMTQuiz2019.db";
     private  static final int DB_VER = 1;
 
-    @SuppressLint("StaticFieldLeak")
+//    @SuppressLint("StaticFieldLeak")
     private static DBHelper instance;
 
     public  static  synchronized  DBHelper getInstance(Context context)

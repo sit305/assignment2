@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "60668172493",
+    "firebase_url": "https://multiplequiz-12c5a.firebaseio.com",
+    "project_id": "multiplequiz-12c5a",
+    "storage_bucket": "multiplequiz-12c5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60668172493:android:6b2e3d3f057770f9",
+        "android_client_info": {
+          "package_name": "com.example.multichoicesquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60668172493-7eeoqrdft55t5q5ncv50jk349cfk2jit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.multichoicesquiz",
+            "certificate_hash": "574d1f54463ae0003404aa6681473745e1d46e34"
+          }
+        },
+        {
+          "client_id": "60668172493-grcl13nistmop4bbjsvkltaikdim0h91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtOZUdk5jKxkoWfaYh5tyHxdEgSIQ43Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60668172493-grcl13nistmop4bbjsvkltaikdim0h91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
