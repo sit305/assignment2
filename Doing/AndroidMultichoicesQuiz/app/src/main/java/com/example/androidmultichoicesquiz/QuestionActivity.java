@@ -230,52 +230,52 @@ public class QuestionActivity extends AppCompatActivity
             setupQuestion();
         }
 
-        else
-            {
-                OnlineDBHelper.getInstance(this,
-                        FirebaseDatabase.getInstance())
-                        .readData(new MyCallback() {
-                            @Override
-                            public void setQuestionList(List<Question> questionList) {
-
-                                if (Common.questionList.size() == 0)
-                                {
-                                    //If no question
-                                    new MaterialStyledDialog.Builder(QuestionActivity.this)
-                                            .setTitle("Opps !")
-                                            .setIcon(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
-                                            .setDescription("We don't have any question in this "+Common.selectedCategory.getName()+" category")
-                                            .setPositiveText("OK")
-                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                                @Override
-                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                    dialog.dismiss();
-                                                    finish();
-                                                }
-                                            }).show();
+//        else
+//            {
+//                OnlineDBHelper.getInstance(this,
+//                       FirebaseDatabase.getInstance())
+//                        .readData(new MyCallback() {
+//                            @Override
+//                            public void setQuestionList(List<Question> questionList) {
+//
+//                                if (Common.questionList.size() == 0)
+//                                {
+//                                    //If no question
+//                                    new MaterialStyledDialog.Builder(QuestionActivity.this)
+//                                            .setTitle("Opps !")
+//                                            .setIcon(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
+//                                            .setDescription("We don't have any question in this "+Common.selectedCategory.getName()+" category")
+//                                            .setPositiveText("OK")
+//                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+//                                                @Override
+//                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//                                                    dialog.dismiss();
+//                                                    finish();
+//                                                }
+//                                            }).show();
+//                                }
+//                                else
+//                                {
+//                                    if (Common.answerSheetList.size() > 0)
+//                                        Common.answerSheetList.clear();
+//                                    //Gen answerSheet item from question
+//                                    //30 question = 30 answer sheet item
+//                                    // 1 question = 1 answer sheet item
+//                                    for (int i=0;i<Common.questionList.size();i++)
+//                                    {
+//                                        //Because need take index of Question in list, so we will use for i
+//                                        Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
+//                                    }
                                 }
-                                else
-                                {
-                                    if (Common.answerSheetList.size() > 0)
-                                        Common.answerSheetList.clear();
-                                    //Gen answerSheet item from question
-                                    //30 question = 30 answer sheet item
-                                    // 1 question = 1 answer sheet item
-                                    for (int i=0;i<Common.questionList.size();i++)
-                                    {
-                                        //Because need take index of Question in list, so we will use for i
-                                        Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
-                                    }
-                                }
 
-                                setupQuestion();
+//                                setupQuestion();
 
-                            }
-                        },Common.selectedCategory.getName().replace("","".replace("/","_")));
-        }
-
-
-    }
+//                            }
+//                        },Common.selectedCategory.getName().replace("","".replace("/","_")));
+//        }
+//
+//
+//    }
 
     private void setupQuestion() {
         if (Common.questionList.size() > 0) {

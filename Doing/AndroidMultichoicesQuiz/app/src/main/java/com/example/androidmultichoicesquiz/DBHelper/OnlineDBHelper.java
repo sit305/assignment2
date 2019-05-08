@@ -20,58 +20,58 @@ import dmax.dialog.SpotsDialog;
 
 public class OnlineDBHelper {
 
-    FirebaseDatabase firebaseDatabase;
-    Context context;
-
-    DatabaseReference reference;
-
-    public OnlineDBHelper(Context context,FirebaseDatabase firebaseDatabase) {
-        this.firebaseDatabase = firebaseDatabase;
-        this.context = context;
-        reference = this.firebaseDatabase.getReference("EDMTQuiz");
-    }
-
-    private static OnlineDBHelper instance;
-
-    public  static  synchronized  OnlineDBHelper getInstance(Context context, FirebaseDatabase firebaseDatabase)
-    {
-        if (instance == null)
-            instance = new OnlineDBHelper(context, firebaseDatabase);
-        return instance;
-    }
-
-
-    public  void  readData(final MyCallback myCallback, String category)
-    {
-        final AlertDialog dialog = new SpotsDialog.Builder()
-                .setContext(context)
-                .setCancelable(false)
-                .build();
-
-        if (!dialog.isShowing())
-            dialog.show();
-
-        reference.child(category)
-                .child("question")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        List<Question> questionList = new ArrayList<>();
-                        for (DataSnapshot questionSnapShot:dataSnapshot.getChildren())
-                            questionList.add(questionSnapShot.getValue(Question.class));
-                        myCallback.setQuestionList(questionList);
-
-                        if (dialog.isShowing())
-                            dialog.dismiss();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(context,""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
+//    FirebaseDatabase firebaseDatabase;
+//    Context context;
+//
+//    DatabaseReference reference;
+//
+//    public OnlineDBHelper(Context context,FirebaseDatabase firebaseDatabase) {
+//        this.firebaseDatabase = firebaseDatabase;
+//        this.context = context;
+//        reference = this.firebaseDatabase.getReference("EDMTQuiz");
+//    }
+//
+//    private static OnlineDBHelper instance;
+//
+//    public  static  synchronized  OnlineDBHelper getInstance(Context context, FirebaseDatabase firebaseDatabase)
+//    {
+//        if (instance == null)
+//            instance = new OnlineDBHelper(context, firebaseDatabase);
+//        return instance;
+//    }
+//
+//
+//    public  void  readData(final MyCallback myCallback, String category)
+//    {
+//        final AlertDialog dialog = new SpotsDialog.Builder()
+//                .setContext(context)
+//                .setCancelable(false)
+//                .build();
+//
+//        if (!dialog.isShowing())
+//            dialog.show();
+//
+//        reference.child(category)
+//                .child("question")
+//                .addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        List<Question> questionList = new ArrayList<>();
+//                        for (DataSnapshot questionSnapShot:dataSnapshot.getChildren())
+//                            questionList.add(questionSnapShot.getValue(Question.class));
+//                        myCallback.setQuestionList(questionList);
+//
+//                        if (dialog.isShowing())
+//                            dialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                        Toast.makeText(context,""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
+//
 
 
 }
