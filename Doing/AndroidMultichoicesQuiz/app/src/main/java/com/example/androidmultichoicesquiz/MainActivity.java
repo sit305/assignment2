@@ -1,5 +1,6 @@
 package com.example.androidmultichoicesquiz;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 //import android.util.DisplayMetrics;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RecyclerView recycler_category;
+    private Button button;
 
     //Ctrl+O
 
@@ -116,5 +119,21 @@ public class MainActivity extends AppCompatActivity {
         recycler_category.addItemDecoration(new SpaceDecoration(spaceInPixel));
         recycler_category.setAdapter(adapter);
 
+        //Button To Home Page
+        button = (Button) findViewById(R.id.btn_homepage);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMain2();
+            }
+        });
+
+
+
+    }
+
+    private void openMain2() {
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.androidmultichoicesquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -98,31 +99,34 @@ public class QuestionActivity extends AppCompatActivity
     }
 
     private void finishGame() {
-        int position = viewPager.getCurrentItem();
+//        int position = viewPager.getCurrentItem();
+//
+//        QuestionFragment questionFragment = Common.fragmentsList.get(position);
+//        CurrentQuestion question_state = questionFragment.getSelectedAnswer();
+//        Common.answerSheetList.set(position,question_state); // Set question answer for answersheet
+//        answerSheetAdapter.notifyDataSetChanged(); // Change color in answer sheet
+//
+//
+//        countCorrectAnswer();
+//
+//        txt_right_answer.setText(new StringBuilder(String.format("%d",Common.right_answer_count))
+//                .append("/")
+//                .append(String.format("%d",Common.questionList.size())).toString());
+//                txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
+//
+//        txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
+//
+//
+//        if (question_state.getType() == Common.ANSWER_TYPE.NO_ANSWER)
+//        {
+//            questionFragment.showCorrectAnswer();
+//            questionFragment.disableAnswer();
+//        }
+//
+//        //We will navigate to new Result Activity here
 
-        QuestionFragment questionFragment = Common.fragmentsList.get(position);
-        CurrentQuestion question_state = questionFragment.getSelectedAnswer();
-        Common.answerSheetList.set(position,question_state); // Set question answer for answersheet
-        answerSheetAdapter.notifyDataSetChanged(); // Change color in answer sheet
-
-
-        countCorrectAnswer();
-
-        txt_right_answer.setText(new StringBuilder(String.format("%d",Common.right_answer_count))
-                .append("/")
-                .append(String.format("%d",Common.questionList.size())).toString());
-                txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
-
-        txt_wrong_answer.setText(String.valueOf(Common.wrong_answer_count));
-
-
-        if (question_state.getType() == Common.ANSWER_TYPE.NO_ANSWER)
-        {
-            questionFragment.showCorrectAnswer();
-            questionFragment.disableAnswer();
-        }
-
-        //We will navigate to new Result Activity here
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 
@@ -266,16 +270,16 @@ public class QuestionActivity extends AppCompatActivity
 //                                        //Because need take index of Question in list, so we will use for i
 //                                        Common.answerSheetList.add(new CurrentQuestion(i,Common.ANSWER_TYPE.NO_ANSWER)); // Default all answer is no answer
 //                                    }
-                                }
-
+//                                }
+//
 //                                setupQuestion();
-
+//
 //                            }
 //                        },Common.selectedCategory.getName().replace("","".replace("/","_")));
 //        }
-//
-//
-//    }
+
+
+    }
 
     private void setupQuestion() {
         if (Common.questionList.size() > 0) {

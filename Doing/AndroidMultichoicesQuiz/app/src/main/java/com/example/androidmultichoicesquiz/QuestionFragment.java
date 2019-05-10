@@ -47,8 +47,8 @@ public class QuestionFragment extends Fragment implements IQuestion {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_question, container, false);
+//         Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_question, container, false);
         View itemView = inflater.inflate(R.layout.fragment_question,container,false);
 
         //Get Question

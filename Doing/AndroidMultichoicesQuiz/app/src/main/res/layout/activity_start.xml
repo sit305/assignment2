@@ -8,14 +8,15 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".StartActivity">
+    tools:context=".StartActivity"
+    android:background="@drawable/darkwlpa">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="WELCOME"
         android:textSize="40sp"
-        android:textColor="#9C27B0"
+        android:textColor="#FEFEFE"
         android:paddingTop="200dp"
         android:layout_centerHorizontal="true"/>
 
