@@ -103,6 +103,28 @@
 - Keep working on the part of question list.[Chun Keung Ng, ZiChao Kuang] (4 hours)
 - Upload the code into Github.[Chun Keung Ng] 
 
+## Week 8, Monday 29/April
+- Had a online meeting on discord.[ZiChao kuang, Chun keung Ng] (2 hours)
+- Work on the part of the "Multiplechoice quiz app" count timer.[Chun Keung Ng,ZiChao Kuang] (4 hours)
+
+## Week 8, Tuesday 30/April
+- Work on taking out the question from database.[Chun Keung Ng,ZiChao Kuang] (1 hour)
+- Work on the sheet layout.[Chun Keung Ng,ZiChao Kuang] (1 hour)
+- Upload those codes that we did yesterday and today on GitHub.[Chun Keung Ng]
+
+## Week 8, Thursday 2/May
+- Debug on the count timer.[Chun Keung Ng] (4.5 hours)
+- Debug the sheet layout.[ZiChao Kuang] (3 hours)
+- Upload those codes after debug.[Chun Keung Ng]
+
+## Week 8, Friday 3/May
+- Completed the interface.[Chun Keung Ng,ZiChao Kuang] (2 hours)
+- Completed the display about the correct and wrong answer.[Chun Keung Ng,ZiChao Kuang] (2.5 hours)
+- Completed the timer working.[Chun Keung Ng,ZiChao Kuang] (1 hour)
+- Completed the display the question list correctly.[Chun Keung Ng,ZiChao Kuang] (2 hours)
+- Upload those codes on GitHub.[Chun Keung Ng]
+
+
 ## Week 9, Wednesday 8/May [Henry]
 - This file is missing edits for Week 8.
 - Good to see some code progress at least. Glad to see it's getting closer. Final stretch now. 
