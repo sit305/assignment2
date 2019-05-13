@@ -15,7 +15,7 @@ import java.util.TreeSet;
 
 public class Common {
 
-    public static final int TOTAL_TIME = 10*1000; //10sec
+    public static final int TOTAL_TIME = 20*1000; //10sec
     public static final String KEY_SAVE_ONLINE_MODE = "ONLINE_MODE";
     public static List<Question> questionList = new ArrayList<>();
     public static List<CurrentQuestion> answerSheetList=new ArrayList<>();
