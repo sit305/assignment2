@@ -39,6 +39,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+
+
 public class QuestionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -125,10 +127,21 @@ public class QuestionActivity extends AppCompatActivity
 //
 //        //We will navigate to new Result Activity here
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, Main2Activity.class);
+//        startActivity(intent);
+//
+//        takeQuestion();
+
+        // Refresh main activity upon close of dialog box
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+        this.finish(); //
+
+
 
     }
+
+
 
     private void countCorrectAnswer() {
         //Reset variable
@@ -171,6 +184,10 @@ public class QuestionActivity extends AppCompatActivity
                 public void onFinish() {
                     //Finish Game
 
+                   finish();
+
+
+
                 }
             }.start();
         }
@@ -190,7 +207,7 @@ public class QuestionActivity extends AppCompatActivity
                 @Override
                 public void onFinish() {
                     //Finish Game
-
+                    finish();
                 }
             }.start();
         }
@@ -514,4 +531,6 @@ public class QuestionActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
