@@ -124,6 +124,20 @@
 - Completed the display the question list correctly.[Chun Keung Ng,ZiChao Kuang] (2 hours)
 - Upload those codes on GitHub.[Chun Keung Ng]
 
+## Week 8, Sunday 5/May
+- Create a option button for keep playing game or quit the game and back to the menu.[Chun Keung Ng] (2 hours)
+- Upload those codes into GitHub.(But the button not working yet, still need to fixing.)[Chun Keung Ng]
+
+## Week 9, Tuesday 7/May
+- Work on the last part of the project, make the project connect to the firebase.[Chun Keung Ng, ZiChao Kuang] (4.5 hours)
+
+## Week 9, Wednesday 8/May
+- Still work on the firebase, and debug with firebase.[Chun Keung Ng, ZiChao Kuang] (5 hours)
+- Upload those codes into GitHub.[Chun Keung Ng]
+
+## Week 9, Friday 10/May
+- Button debug and fix the UI design.[Chun Keung Ng,ZiChao Kuang] (2 hours)
+- Upload those codes into Github.[Chun Keung Ng]
 
 ## Week 9, Wednesday 8/May [Henry]
 - This file is missing edits for Week 8.
