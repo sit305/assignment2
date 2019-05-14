@@ -1,4 +1,5 @@
-##Unit Chair feedback:
+Unit Chair feedback:
+
 ## Week 4 [Henry]
 - This file needs significantly more edits, so I can match dates with attendance.php entries and ensure fair grades at end of trimester.
 - You need much more progress. Deakin requires a minimum 10-14 hours per week, per unit, in order to pass.
@@ -18,7 +19,8 @@
 - Good to see some code progress at least. Glad to see it's getting closer. Final stretch now. 
 - Make sure you go over everything in the Grading Criteria super carefully, to ensure you meet each point.
 
-## Member changelog
+Member changelog:
+
 ## Week 3, Monday, 18/March
 - Created Github [Chun Keung Ng]
 - Created readme.md file [Chun Keung Ng] 
