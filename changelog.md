@@ -148,9 +148,6 @@ Member changelog:
 - Button debug and fix the UI design.[Chun Keung Ng,ZiChao Kuang] (2 hours)
 - Upload those codes into Github.[Chun Keung Ng]
 
-## Week 9, Wednesday 8/May [Henry]
-- This file is missing edits for Week 8.
-- Good to see some code progress at least. Glad to see it's getting closer. Final stretch now. 
-- Make sure you go over everything in the Grading Criteria super carefully, to ensure you meet each point.
+
 
 
