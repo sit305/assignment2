@@ -148,6 +148,8 @@ Member changelog:
 - Button debug and fix the UI design.[Chun Keung Ng,ZiChao Kuang] (2 hours)
 - Upload those codes into Github.[Chun Keung Ng]
 
-
-
+## Week 9, Monday 13/May
+- Upload all part of code into GitHub.[Chun Keung Ng]
+- Re-write the readme.md file.[ZiChao Kuang]
+- Create the Licence.txt.[Chun Keung Ng]
 
