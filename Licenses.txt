@@ -2,23 +2,27 @@
 Image Reference
 
 Item name: darkwlpa.jpg
-License type: MIT
+License type: CC0
 Author/Attribution: MaxCDN Content Delivery Network 2013, abstract-black-dark, retrieved 1 May 2019,
 Source Website: http://www.mobileswall.com/wallpaper/abstract-black-dark/
+Additional License page url: http://www.mobileswall.com/about/
 
 
 Item name: ic_launcher.png
 License type: Public Domain
 Icons8 LLC 2019, book, retrieved 5 May 2019,
 Source Website: https://icons8.com/icons/set/book
+Additional License page url: https://icons8.com/license
 
 
 Item name: shutterstock.jpg
 License type: MIT
 Author/Attribution: Papri Chanda 2019, Karnataka PUC Result 2019 announced, check result and here, retrieved 19 April 2019,
 Source Website: https://www.timesnownews.com/education/article/karnataka-puc-result-2019-expected-next-week-at-pue-kar-nic-in-check-updates-here/399549
+Additional License page url: Non
 
 Item name: dwphwalpar.jpeg
 License type: MIT
 Author/Attribution: WallpaperAccess 2019, Dark Phone Wallpapers, retrieved 24 April 2019,
 Source Website: https://wallpaperaccess.com/dark-phone
+Additional License page url: https://wallpaperaccess.com/terms
