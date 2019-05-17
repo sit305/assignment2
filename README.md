@@ -9,6 +9,9 @@ Team:<br/>
 CHUN KEUNG NG (SID: 214497259)<br/>
 ZiChao Kuang (SID: 215196936)
 
+githublink:
+https://github.com/sit305/assignment2/tree/master/Doing/AndroidMultichoicesQuiz
+
 This is a quiz app base on the Android platform. This is a "Multichoice Quiz App", we developed this app for the high school students that ready for the exam, our app can help them review the important questions and expand more point of main knowledge. We had collect various of important major's questions from the high school exam database and reference it into our app. If student have any question, just contact our customer service, we make the contact us feature connect with firebase, so we can see the message from customer and reply it when we see it.
 
 Design
