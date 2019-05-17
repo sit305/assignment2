@@ -13,8 +13,11 @@ This is a quiz app base on the Android platform. This is a "Multichoice Quiz App
 
 Design
 (This is just a draft design, the actual running program interface will be different)
-![33](https://user-images.githubusercontent.com/39719506/55706503-b5630a00-5a24-11e9-8534-7772870dd8f0.jpg)
+![IMG_7812](https://user-images.githubusercontent.com/39719506/57902783-3b893080-78ae-11e9-8988-60423f6bf7fc.JPG)
+![IMG_7813](https://user-images.githubusercontent.com/39719506/57902795-5065c400-78ae-11e9-8604-ba61b822b271.JPG)
+
 
 
 Running program<br/>
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/39719506/55723717-130b4c80-5a4d-11e9-97d0-8a5fd0f72093.gif)
+![Untitled3](https://user-images.githubusercontent.com/39719506/57902858-af2b3d80-78ae-11e9-92f6-7fbecb6ee8f2.gif)
+
